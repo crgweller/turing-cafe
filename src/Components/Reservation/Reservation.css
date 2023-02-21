@@ -1,4 +1,13 @@
 .resy-card{
-  border-width: 3px;
-  border-color: green;
+    box-sizing: border-box;
+    border: 3px solid green;
+    padding: 20px;
+    margin:20px;
+    background: white;
+    width: 15rem;
+    border-radius: 20px;
+}
+
+.nameText{
+  font-weight: 700;
 }

@@ -5,11 +5,10 @@ function Reservation({reservation}){
 
   return (
     <div className="resy-card">
-        <p>{reservation.id}</p>
-        <p>{reservation.name}</p>
+        <p className="nameText">{reservation.name}</p>
         <p>{reservation.date}</p>
         <p>{reservation.time}</p>
-        <p>{reservation.number}</p>
+        <p>Number of Guests: {reservation.number}</p>
     </div>
   )
 }
