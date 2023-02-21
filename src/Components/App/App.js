@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { fetchReservations } from '../../ApiCalls';
 import AllResys from '../AllResys/AllResys';
+import Form from '../Form/Form';
 
 
 class App extends Component {
@@ -22,13 +23,17 @@ class App extends Component {
     })
   }
 
+  addResy = (newResy) => {
+    // e.preventDefault()
+    this.setState({reservations: [...this.state.reservations, newResy]})
+  }
 
   render() {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <div className='resy-form'>
-
+        <Form />
         </div>
           <div className='resy-container'>
             <AllResys reservations={this.state.reservations}/>
