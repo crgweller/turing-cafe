@@ -17,7 +17,7 @@ class App extends Component {
   componentDidMount(){
     fetchReservations()
     .then(data => {
-      return this.setState({
+      this.setState({
         reservations: data
       })
     })
@@ -25,9 +25,7 @@ class App extends Component {
 
   handleSubmit = (inputs) => {
     const newRes = {...inputs, id: Date.now()}
-    this.setState((prevState) => {
-      return { reservations: [...prevState.reservations, newRes ]}
-    })
+    this.setState({ reservations: [...this.state.reservations, newRes ]})
   }
 
   render() {
