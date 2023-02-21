@@ -3,7 +3,7 @@ import './Form.css'
 
 class Form extends Component {
   constructor(props){
-      super()
+      super(props)
       this.state = {
           name: '',
           date: '',
@@ -12,25 +12,28 @@ class Form extends Component {
       }
   }
 
-  handleChange = (target) => {
-    this.setState({ [target.name]: target.value },)
+  handleChange = (event) => {
+    console.log('I am typing')
+    this.setState({ [event.target.name]: event.target.value },)
   }
 
-  handleClick = ({ handleSubmit }) => {
-    handleSubmit(this.state)
+  handleClick = ({event}) => {
+    console.log('submit')
+    event.preventDefault()
+    this.props.handleSubmit(this.state)
   }
 
   render() {
     return (<form>
       <label htmlFor="name" className="hidden"></label>
-        <input name='name' value={this.state.name} onChange={(event) => this.handleChange(event.target)} placeholder="Name" type='text' />
+        <input name='name' value={this.state.name} onChange={(event) => this.handleChange(event)} placeholder="Name" type='text' />
       <label htmlFor="date" className="hidden"></label>
-        <input name='date' value={this.state.date} onChange={(event) => this.handleChange(event.target)} placeholder="Date(mm/dd)" type='text' />
+        <input name='date' value={this.state.date} onChange={(event) => this.handleChange(event)} placeholder="Date(mm/dd)" type='text' />
       <label htmlFor="time" className="hidden"></label>
-        <input name='time' value={this.state.time} onChange={(event) => this.handleChange(event.target)} placeholder="Time" type='text' />
+        <input name='time' value={this.state.time} onChange={(event) => this.handleChange(event)} placeholder="Time" type='text' />
       <label htmlFor='number' className="hidden"></label>
-        <input name='number' value={this.state.number} onChange={(event) => this.handleChange(event.target)} placeholder="Number of guests" type='number' />
-      <button className='submit-button' type='submit' onClick={this.handleClick}>Make Reservation</button> 
+        <input name='number' value={this.state.number} onChange={(event) => this.handleChange(event)} placeholder="Number of guests" type='number' />
+      <button className='submit-button' type='submit' onClick={(event) => this.handleClick(event)}>Make Reservation</button> 
     </form>)
   }
 }

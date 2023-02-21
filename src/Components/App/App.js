@@ -23,9 +23,11 @@ class App extends Component {
     })
   }
 
-  addResy = (newResy) => {
-    // e.preventDefault()
-    this.setState({reservations: [...this.state.reservations, newResy]})
+  handleSubmit = (inputs) => {
+    const newRes = {...inputs, id: Date.now()}
+    this.setState((prevState) => {
+      return { reservations: [...prevState.reservations, newRes ]}
+    })
   }
 
   render() {
@@ -33,7 +35,7 @@ class App extends Component {
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <div className='resy-form'>
-        <Form />
+        <Form handleSubmit={this.handleSubmit}/>
         </div>
           <div className='resy-container'>
             <AllResys reservations={this.state.reservations}/>
